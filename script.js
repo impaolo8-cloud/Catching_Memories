@@ -68,9 +68,20 @@ const PACKAGES_DATA = {
   }
 };
 
+const ALBUM_LABELS = {
+  weddings: "Album 01 • Weddings & Sacred Ceremonies",
+  debut: "Album 02 • Debut & Pre-Birthday Editorial",
+  prenup: "Album 03 • Prenup & Engagement Stories",
+  reception: "Album 04 • Grand Reception & Stage Lighting"
+};
+
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Navbar Scroll Effect
+  // 1. Navbar Scroll Effect & Mobile Menu Drawer
   const navbar = document.getElementById("navbar");
+  const mobileToggle = document.getElementById("mobile-menu-toggle");
+  const mobileDrawer = document.getElementById("mobile-drawer");
+  const mobileLinks = document.querySelectorAll(".mobile-nav-link");
+
   window.addEventListener("scroll", () => {
     if (window.scrollY > 30) {
       navbar.classList.add("scrolled");
@@ -79,44 +90,150 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 2. Gallery Category Filtering
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  const galleryItems = document.querySelectorAll(".gallery-item");
+  if (mobileToggle && mobileDrawer) {
+    mobileToggle.addEventListener("click", () => {
+      const isOpen = mobileDrawer.classList.toggle("open");
+      mobileToggle.setAttribute("aria-expanded", String(isOpen));
+    });
 
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      filterBtns.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      const filter = btn.getAttribute("data-filter");
-      galleryItems.forEach((item) => {
-        const category = item.getAttribute("data-category");
-        if (filter === "all" || category === filter) {
-          item.style.display = "block";
-        } else {
-          item.style.display = "none";
-        }
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileDrawer.classList.remove("open");
+        mobileToggle.setAttribute("aria-expanded", "false");
       });
+    });
+  }
+
+  // 2. Compiled Album Filtering (Bookshelf Cover Cards + Filter Buttons)
+  const albumFilterTriggers = document.querySelectorAll("[data-album-filter]");
+  const albumBlocks = document.querySelectorAll(".compiled-album-block");
+  const albumCoverCards = document.querySelectorAll(".album-cover-card");
+  const filterBtns = document.querySelectorAll(".filter-btn");
+
+  function filterAlbums(albumKey, shouldScroll = false) {
+    // Update Filter Pills
+    filterBtns.forEach((btn) => {
+      if (btn.getAttribute("data-album-filter") === albumKey) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
+    });
+
+    // Update Album Cover Cards
+    albumCoverCards.forEach((card) => {
+      if (card.getAttribute("data-album-filter") === albumKey) {
+        card.classList.add("active");
+      } else {
+        card.classList.remove("active");
+      }
+    });
+
+    // Show/Hide Compiled Album Blocks
+    albumBlocks.forEach((block) => {
+      const blockType = block.getAttribute("data-album-block");
+      if (albumKey === "all" || blockType === albumKey) {
+        block.style.display = "block";
+      } else {
+        block.style.display = "none";
+      }
+    });
+
+    if (shouldScroll) {
+      const firstVisible = document.querySelector(
+        albumKey === "all"
+          ? ".compiled-album-block"
+          : `.compiled-album-block[data-album-block="${albumKey}"]`
+      );
+      if (firstVisible) {
+        firstVisible.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }
+
+  albumFilterTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const albumKey = trigger.getAttribute("data-album-filter");
+      const isCoverCard = trigger.classList.contains("album-cover-card");
+      filterAlbums(albumKey, isCoverCard);
     });
   });
 
-  // 3. Lightbox Viewer
+  // 3. Compiled Album Lightbox Slideshow (Scoped by Album Type)
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
   const lightboxCaption = document.getElementById("lightbox-caption");
+  const lightboxSub = document.getElementById("lightbox-sub");
   const lightboxClose = document.getElementById("lightbox-close");
+  const lightboxPrev = document.getElementById("lightbox-prev");
+  const lightboxNext = document.getElementById("lightbox-next");
 
-  galleryItems.forEach((item) => {
+  let currentAlbumItems = [];
+  let currentSlideIndex = 0;
+  let currentAlbumKey = "weddings";
+
+  function openAlbumLightbox(albumKey, startIndex = 0) {
+    currentAlbumKey = albumKey;
+    currentAlbumItems = Array.from(
+      document.querySelectorAll(`.gallery-item[data-album="${albumKey}"]`)
+    );
+    if (currentAlbumItems.length === 0) return;
+
+    currentSlideIndex = startIndex;
+    renderCurrentSlide();
+    lightbox.classList.add("open");
+  }
+
+  function renderCurrentSlide() {
+    const item = currentAlbumItems[currentSlideIndex];
+    if (!item) return;
+    const img = item.querySelector("img");
+    const title = item.querySelector("h4")?.textContent || "";
+    const tag = item.querySelector(".gallery-meta span")?.textContent || "";
+    const albumLabel = ALBUM_LABELS[currentAlbumKey] || "Portfolio Album";
+
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightboxCaption.textContent = title;
+    lightboxSub.textContent = `${albumLabel} (${tag}) • Photo ${currentSlideIndex + 1} of ${currentAlbumItems.length}`;
+  }
+
+  function stepSlide(delta) {
+    if (currentAlbumItems.length === 0) return;
+    currentSlideIndex =
+      (currentSlideIndex + delta + currentAlbumItems.length) %
+      currentAlbumItems.length;
+    renderCurrentSlide();
+  }
+
+  document.querySelectorAll(".gallery-item").forEach((item) => {
     item.addEventListener("click", () => {
-      const img = item.querySelector("img");
-      const title = item.querySelector("h3")?.textContent || "";
-      const tag = item.querySelector(".gallery-meta span")?.textContent || "";
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      lightboxCaption.textContent = `${title} — ${tag}`;
-      lightbox.classList.add("open");
+      const albumKey = item.getAttribute("data-album");
+      const idx = parseInt(item.getAttribute("data-index") || "0", 10);
+      openAlbumLightbox(albumKey, idx);
     });
   });
+
+  document.querySelectorAll("[data-open-slideshow]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const albumKey = btn.getAttribute("data-open-slideshow");
+      openAlbumLightbox(albumKey, 0);
+    });
+  });
+
+  if (lightboxPrev) {
+    lightboxPrev.addEventListener("click", (e) => {
+      e.stopPropagation();
+      stepSlide(-1);
+    });
+  }
+
+  if (lightboxNext) {
+    lightboxNext.addEventListener("click", (e) => {
+      e.stopPropagation();
+      stepSlide(1);
+    });
+  }
 
   if (lightboxClose) {
     lightboxClose.addEventListener("click", () => {
@@ -133,8 +250,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && lightbox && lightbox.classList.contains("open")) {
+    if (!lightbox || !lightbox.classList.contains("open")) return;
+    if (e.key === "Escape") {
       lightbox.classList.remove("open");
+    } else if (e.key === "ArrowLeft") {
+      stepSlide(-1);
+    } else if (e.key === "ArrowRight") {
+      stepSlide(1);
     }
   });
 
@@ -271,7 +393,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const selectedPkg = hiddenPkgInput.value;
       const clientNotes = document.getElementById("client-notes").value.trim();
 
-      // Gather any checked add-ons
       const checkedAddons = Array.from(
         document.querySelectorAll('input[name="addon"]:checked')
       ).map((cb) => cb.value);

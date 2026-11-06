@@ -13,7 +13,7 @@
 <body>
 
   <!-- ====================================================================
-       NAVIGATION BAR (White Gallery Aesthetic)
+       NAVIGATION BAR & MOBILE DRAWER
        ==================================================================== -->
   <header class="navbar" id="navbar">
     <div class="container nav-inner">
@@ -29,8 +29,8 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="#gallery">White Gallery</a></li>
-        <li><a href="#packages">Event Packages</a></li>
+        <li><a href="#gallery">Event Albums</a></li>
+        <li><a href="#packages">Packages &amp; Rates</a></li>
         <li><a href="#experience">The Experience</a></li>
         <li><a href="#booking">Book a Date</a></li>
       </ul>
@@ -42,6 +42,28 @@
         <a href="#booking" class="btn btn-primary">
           Reserve Your Date
         </a>
+      </div>
+
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <ul class="mobile-drawer-links">
+        <li><a href="#gallery" class="mobile-nav-link">Event Albums</a></li>
+        <li><a href="#packages" class="mobile-nav-link">Packages &amp; Pricing</a></li>
+        <li><a href="#experience" class="mobile-nav-link">The Experience</a></li>
+        <li><a href="#booking" class="mobile-nav-link">Book Your Date</a></li>
+      </ul>
+      <div class="mobile-drawer-actions">
+        <a href="#booking" class="btn btn-primary mobile-nav-link">Reserve Your Date</a>
+        <a href="https://www.facebook.com/joefamini.photography" target="_blank" rel="noopener" class="btn btn-outline">Facebook Page</a>
       </div>
     </div>
   </header>
@@ -64,40 +86,56 @@
         </p>
 
         <div class="hero-cta-group">
-          <a href="#packages" class="btn btn-primary">Explore Wedding &amp; Debut Packages</a>
-          <a href="#gallery" class="btn btn-outline">View White Gallery (13 Works)</a>
+          <a href="#packages" class="btn btn-primary">Explore Event Packages</a>
+          <a href="#gallery" class="btn btn-outline">Browse Compiled Albums</a>
         </div>
 
         <div class="hero-stats">
           <div class="stat-item">
-            <strong>10 Tiers</strong>
-            <span>Wedding &amp; Birthday Packages</span>
+            <strong>4 Albums</strong>
+            <span>Compiled By Event Type</span>
           </div>
           <div class="stat-item">
-            <strong>Full Day</strong>
-            <span>Prep to Reception</span>
+            <strong>10 Tiers</strong>
+            <span>Wedding &amp; Birthday Rates</span>
           </div>
           <div class="stat-item">
             <strong>SDE &amp; Studio</strong>
-            <span>Cinema, Drone &amp; Themed Sets</span>
+            <span>Cinema, Drone &amp; Stylist</span>
           </div>
         </div>
       </div>
 
+      <!-- Hero Collage: Left has 2 Landscape Frames, Right has 1 Portrait Frame -->
       <div class="hero-visual">
-        <div class="hero-card-main">
-          <img src="111.jpg" alt="Dramatic wedding arch reflection portrait by Catching Memories Photography" />
-          <div class="floating-caption">
-            <span>Signature Composition</span>
-            <strong>Reflections of Forever</strong>
+        <div class="hero-card-left">
+          <div class="hero-frame">
+            <div class="hero-frame-img landscape">
+              <img src="111.jpg" alt="Dramatic wedding arch reflection portrait by Catching Memories Photography" />
+            </div>
+            <div class="hero-frame-caption">
+              <strong>Reflections of Forever</strong>
+              <span>Wedding Album</span>
+            </div>
+          </div>
+          <div class="hero-frame">
+            <div class="hero-frame-img landscape">
+              <img src="805807949_1397021045871967_1192482736027602805_n.jpg" alt="Coastal rock arch prenup portrait by Catching Memories Photography" />
+            </div>
+            <div class="hero-frame-caption">
+              <strong>Where Tides Meet</strong>
+              <span>Prenup Album</span>
+            </div>
           </div>
         </div>
-        <div class="hero-card-stack">
-          <div class="hero-card-sub">
+
+        <div class="hero-frame">
+          <div class="hero-frame-img portrait">
             <img src="predebut1.jpg" alt="Enchanted candlelight themed pre-debut portrait by Catching Memories Photography" />
           </div>
-          <div class="hero-card-sub">
-            <img src="805807949_1397021045871967_1192482736027602805_n.jpg" alt="Coastal rock arch prenup portrait by Catching Memories Photography" />
+          <div class="hero-frame-caption">
+            <strong>Chandelier Elegance</strong>
+            <span>Pre-Debut Album</span>
           </div>
         </div>
       </div>
@@ -105,170 +143,276 @@
   </section>
 
   <!-- ====================================================================
-       WHITE GALLERY — PORTFOLIO SHOWCASE (13 CLIENT PHOTOS)
+       WHITE GALLERY — COMPILED INTO ALBUMS BY EVENT TYPE
        ==================================================================== -->
   <section class="gallery-section" id="gallery">
     <div class="container">
       <div class="section-header">
-        <span class="eyebrow">Curated Exhibition</span>
-        <h2 class="section-title">The White <em>Gallery</em></h2>
+        <span class="eyebrow">Portfolio Compilations</span>
+        <h2 class="section-title">Event Albums <em>by Category</em></h2>
         <p class="section-subtitle">
-          Explore our latest weddings, themed pre-debut studio setups, and outdoor engagement sessions. Click any photograph to inspect in full resolution.
+          Our work is compiled into dedicated event albums below. Select an album cover to focus on a specific celebration type or open its fullscreen slideshow.
         </p>
       </div>
 
-      <div class="gallery-filters">
-        <button class="filter-btn active" data-filter="all">All Selected Works (13)</button>
-        <button class="filter-btn" data-filter="weddings">Weddings &amp; Ceremonies</button>
-        <button class="filter-btn" data-filter="debut">Debut &amp; Birthday Shoots</button>
-        <button class="filter-btn" data-filter="prenup">Prenup &amp; Engagement</button>
-        <button class="filter-btn" data-filter="reception">Reception &amp; Details</button>
+      <!-- 4 Album Cover Cards (Bookshelf Selector) -->
+      <div class="album-selector-grid">
+        <button type="button" class="album-cover-card" data-album-filter="weddings">
+          <div class="album-cover-thumb">
+            <img src="723665108_1320939490146790_8527573178650661874_n.jpg" alt="Wedding Ceremonies &amp; Portraits Album Cover" />
+            <span class="album-count-pill">5 Photos</span>
+          </div>
+          <div class="album-cover-info">
+            <span class="album-cover-tag">Album 01</span>
+            <h3 class="album-cover-title">Weddings &amp; Ceremonies</h3>
+          </div>
+        </button>
+
+        <button type="button" class="album-cover-card" data-album-filter="debut">
+          <div class="album-cover-thumb">
+            <img src="814695819_1400498735524198_6887160704749919029_n.jpg" alt="Debut &amp; Pre-Birthday Album Cover" />
+            <span class="album-count-pill">3 Photos</span>
+          </div>
+          <div class="album-cover-info">
+            <span class="album-cover-tag">Album 02</span>
+            <h3 class="album-cover-title">Debut &amp; Pre-Birthday</h3>
+          </div>
+        </button>
+
+        <button type="button" class="album-cover-card" data-album-filter="prenup">
+          <div class="album-cover-thumb">
+            <img src="805807949_1397021045871967_1192482736027602805_n.jpg" alt="Prenup &amp; Engagement Album Cover" />
+            <span class="album-count-pill">3 Photos</span>
+          </div>
+          <div class="album-cover-info">
+            <span class="album-cover-tag">Album 03</span>
+            <h3 class="album-cover-title">Prenup &amp; Engagement</h3>
+          </div>
+        </button>
+
+        <button type="button" class="album-cover-card" data-album-filter="reception">
+          <div class="album-cover-thumb">
+            <img src="1111.jpg" alt="Grand Reception &amp; Stage Lighting Album Cover" />
+            <span class="album-count-pill">2 Photos</span>
+          </div>
+          <div class="album-cover-info">
+            <span class="album-cover-tag">Album 04</span>
+            <h3 class="album-cover-title">Reception &amp; Stage Light</h3>
+          </div>
+        </button>
       </div>
 
-      <div class="gallery-grid">
-        <!-- 1: Wedding Mirror Arch -->
-        <article class="gallery-item span-7" data-category="weddings">
-          <div class="gallery-img-wrap">
-            <img src="111.jpg" alt="Sanctuary of Light &amp; Reflection" loading="lazy" />
-          </div>
-          <div class="gallery-meta">
-            <h3>Sanctuary of Light &amp; Reflection</h3>
-            <span>Wedding Portrait</span>
-          </div>
-        </article>
-
-        <!-- 2: Pre-Debut Chandelier Gown -->
-        <article class="gallery-item span-5" data-category="debut">
-          <div class="gallery-img-wrap">
-            <img src="predebut1.jpg" alt="Enchanted Chandelier Elegance" loading="lazy" />
-          </div>
-          <div class="gallery-meta">
-            <h3>Enchanted Chandelier Elegance</h3>
-            <span>Themed Pre-Debut</span>
-          </div>
-        </article>
-
-        <!-- 3: Coastal Rock Arch Prenup -->
-        <article class="gallery-item span-7" data-category="prenup">
-          <div class="gallery-img-wrap">
-            <img src="805807949_1397021045871967_1192482736027602805_n.jpg" alt="Where Tides Meet Forever" loading="lazy" />
-          </div>
-          <div class="gallery-meta">
-            <h3>Where Tides Meet Forever</h3>
-            <span>Outdoor Coastal Prenup</span>
-          </div>
-        </article>
-
-        <!-- 4: Woodland Fairy Swing Pre-Birthday -->
-        <article class="gallery-item span-5" data-category="debut">
-          <div class="gallery-img-wrap">
-            <img src="797419435_1404850418422363_4865977380060035540_n.jpg" alt="Midsummer Woodland Reverie" loading="lazy" />
-          </div>
-          <div class="gallery-meta">
-            <h3>Midsummer Woodland Reverie</h3>
-            <span>Themed Studio Debut</span>
-          </div>
-        </article>
-
-        <!-- 5: Rose Tulle Overhead Pre-Birthday -->
-        <article class="gallery-item span-4" data-category="debut">
-          <div class="gallery-img-wrap">
-            <img src="814695819_1400498735524198_6887160704749919029_n.jpg" alt="Blush Tulle &amp; Rose Petals" loading="lazy" />
-          </div>
-          <div class="gallery-meta">
-            <h3>Blush Tulle &amp; Rose Petals</h3>
-            <span>Pre-Birthday Editorial</span>
-          </div>
-        </article>
-
-        <!-- 6: White Floral Arch Ceremony -->
-        <article class="gallery-item span-4" data-category="weddings">
-          <div class="gallery-img-wrap">
-            <img src="723665108_1320939490146790_8527573178650661874_n.jpg" alt="White Blossom Altar Vows" loading="lazy" />
-          </div>
-          <div class="gallery-meta">
-            <h3>White Blossom Altar Vows</h3>
-            <span>Wedding Ceremony</span>
-          </div>
-        </article>
-
-        <!-- 7: Grand Chapel & Bridal Car -->
-        <article class="gallery-item span-4" data-category="weddings">
-          <div class="gallery-img-wrap">
-            <img src="724403002_1320939740146765_2931970179207862299_n.jpg" alt="Grand Cathedral Departure" loading="lazy" />
-          </div>
-          <div class="gallery-meta">
-            <h3>Grand Cathedral Departure</h3>
-            <span>Bridal Car Portrait</span>
-          </div>
-        </article>
-
-        <!-- 8: Playful White Bridge Prenup -->
-        <article class="gallery-item span-6" data-category="prenup">
-          <div class="gallery-img-wrap">
-            <img src="795523619_1402845421956196_6001966453305717940_n.jpg" alt="Joyful Steps Across the Boardwalk" loading="lazy" />
-          </div>
-          <div class="gallery-meta">
-            <h3>Joyful Steps on the Boardwalk</h3>
-            <span>Prenup &amp; Civil Editorial</span>
-          </div>
-        </article>
-
-        <!-- 9: Cozy Indoor Couple Portrait -->
-        <article class="gallery-item span-6" data-category="prenup">
-          <div class="gallery-img-wrap">
-            <img src="805784039_1397020449205360_5468499569883583447_n.jpg" alt="Warmth &amp; Wanderlust" loading="lazy" />
-          </div>
-          <div class="gallery-meta">
-            <h3>Warmth &amp; Wanderlust</h3>
-            <span>Lifestyle Engagement</span>
-          </div>
-        </article>
-
-        <!-- 10: Golden Hour Embrace -->
-        <article class="gallery-item span-5" data-category="weddings">
-          <div class="gallery-img-wrap">
-            <img src="11.jpg" alt="Golden Ray Embrace" loading="lazy" />
-          </div>
-          <div class="gallery-meta">
-            <h3>Golden Ray Embrace</h3>
-            <span>Couple Portrait</span>
-          </div>
-        </article>
-
-        <!-- 11: Grand Canopy Reception -->
-        <article class="gallery-item span-7" data-category="reception">
-          <div class="gallery-img-wrap">
-            <img src="1111.jpg" alt="Under the Starlit Canopy" loading="lazy" />
-          </div>
-          <div class="gallery-meta">
-            <h3>Under the Starlit Canopy</h3>
-            <span>Grand Reception</span>
-          </div>
-        </article>
-
-        <!-- 12: Rings on Scripture -->
-        <article class="gallery-item span-5" data-category="reception">
-          <div class="gallery-img-wrap">
-            <img src="11111.jpg" alt="Promises in Gold" loading="lazy" />
-          </div>
-          <div class="gallery-meta">
-            <h3>Promises in Gold</h3>
-            <span>Preparation Details</span>
-          </div>
-        </article>
-
-        <!-- 13: Radiant Amber Beams Reception -->
-        <article class="gallery-item span-7" data-category="reception">
-          <div class="gallery-img-wrap">
-            <img src="1.jpg" alt="Symphony of Warmth &amp; Stage Light" loading="lazy" />
-          </div>
-          <div class="gallery-meta">
-            <h3>Symphony of Warmth &amp; Stage Light</h3>
-            <span>Reception Spotlight</span>
-          </div>
-        </article>
+      <!-- Filter Pills -->
+      <div class="gallery-view-bar">
+        <button class="filter-btn active" data-album-filter="all">Show All 4 Compiled Albums</button>
+        <button class="filter-btn" data-album-filter="weddings">01 • Weddings (5)</button>
+        <button class="filter-btn" data-album-filter="debut">02 • Debut &amp; Birthday (3)</button>
+        <button class="filter-btn" data-album-filter="prenup">03 • Prenup &amp; Engagement (3)</button>
+        <button class="filter-btn" data-album-filter="reception">04 • Reception &amp; Lighting (2)</button>
       </div>
+
+      <!-- ================================================================
+           COMPILED ALBUM 01: WEDDINGS & CEREMONIES (5 PHOTOS)
+           ================================================================ -->
+      <div class="compiled-album-block" data-album-block="weddings">
+        <div class="album-block-header">
+          <div>
+            <span class="album-number">Album 01 • 5 Photographs</span>
+            <h3 class="album-block-title">Weddings &amp; Sacred Ceremonies</h3>
+            <p class="album-block-desc">From wedding rings and church vows to intimate newlywed portraits.</p>
+          </div>
+          <button type="button" class="btn btn-outline" data-open-slideshow="weddings">
+            Open Wedding Slideshow
+          </button>
+        </div>
+
+        <div class="album-photos-grid">
+          <article class="gallery-item" data-album="weddings" data-index="0">
+            <div class="gallery-img-wrap ratio-landscape">
+              <img src="111.jpg" alt="Sanctuary of Light &amp; Reflection" loading="lazy" />
+            </div>
+            <div class="gallery-meta">
+              <h4>Sanctuary of Light &amp; Reflection</h4>
+              <span>Bridal Arch</span>
+            </div>
+          </article>
+
+          <article class="gallery-item" data-album="weddings" data-index="1">
+            <div class="gallery-img-wrap ratio-landscape">
+              <img src="723665108_1320939490146790_8527573178650661874_n.jpg" alt="White Blossom Altar Vows" loading="lazy" />
+            </div>
+            <div class="gallery-meta">
+              <h4>White Blossom Altar Vows</h4>
+              <span>Ceremony</span>
+            </div>
+          </article>
+
+          <article class="gallery-item" data-album="weddings" data-index="2">
+            <div class="gallery-img-wrap ratio-landscape">
+              <img src="724403002_1320939740146765_2931970179207862299_n.jpg" alt="Grand Cathedral Departure" loading="lazy" />
+            </div>
+            <div class="gallery-meta">
+              <h4>Grand Cathedral Departure</h4>
+              <span>Bridal Car</span>
+            </div>
+          </article>
+
+          <article class="gallery-item" data-album="weddings" data-index="3">
+            <div class="gallery-img-wrap ratio-landscape">
+              <img src="11.jpg" alt="Golden Ray Embrace" loading="lazy" />
+            </div>
+            <div class="gallery-meta">
+              <h4>Golden Ray Embrace</h4>
+              <span>Couple Portrait</span>
+            </div>
+          </article>
+
+          <article class="gallery-item" data-album="weddings" data-index="4">
+            <div class="gallery-img-wrap ratio-landscape">
+              <img src="11111.jpg" alt="Promises in Gold" loading="lazy" />
+            </div>
+            <div class="gallery-meta">
+              <h4>Promises in Gold</h4>
+              <span>Rings &amp; Details</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- ================================================================
+           COMPILED ALBUM 02: DEBUT & PRE-BIRTHDAY SHOOTS (3 PHOTOS)
+           ================================================================ -->
+      <div class="compiled-album-block" data-album-block="debut">
+        <div class="album-block-header">
+          <div>
+            <span class="album-number">Album 02 • 3 Photographs</span>
+            <h3 class="album-block-title">Debut &amp; Pre-Birthday Editorial</h3>
+            <p class="album-block-desc">Custom-styled studio sets, enchanted floral swings, and couture pre-debut portraiture.</p>
+          </div>
+          <button type="button" class="btn btn-outline" data-open-slideshow="debut">
+            Open Debut Slideshow
+          </button>
+        </div>
+
+        <div class="album-photos-grid">
+          <article class="gallery-item" data-album="debut" data-index="0">
+            <div class="gallery-img-wrap ratio-portrait">
+              <img src="predebut1.jpg" alt="Enchanted Chandelier Elegance" loading="lazy" />
+            </div>
+            <div class="gallery-meta">
+              <h4>Enchanted Chandelier Elegance</h4>
+              <span>Themed Pre-Debut</span>
+            </div>
+          </article>
+
+          <article class="gallery-item" data-album="debut" data-index="1">
+            <div class="gallery-img-wrap ratio-portrait">
+              <img src="797419435_1404850418422363_4865977380060035540_n.jpg" alt="Midsummer Woodland Reverie" loading="lazy" />
+            </div>
+            <div class="gallery-meta">
+              <h4>Midsummer Woodland Reverie</h4>
+              <span>Studio Set-Up</span>
+            </div>
+          </article>
+
+          <article class="gallery-item" data-album="debut" data-index="2">
+            <div class="gallery-img-wrap ratio-portrait">
+              <img src="814695819_1400498735524198_6887160704749919029_n.jpg" alt="Blush Tulle &amp; Rose Petals" loading="lazy" />
+            </div>
+            <div class="gallery-meta">
+              <h4>Blush Tulle &amp; Rose Petals</h4>
+              <span>Pre-Birthday</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- ================================================================
+           COMPILED ALBUM 03: PRENUP & ENGAGEMENT SESSIONS (3 PHOTOS)
+           ================================================================ -->
+      <div class="compiled-album-block" data-album-block="prenup">
+        <div class="album-block-header">
+          <div>
+            <span class="album-number">Album 03 • 3 Photographs</span>
+            <h3 class="album-block-title">Prenup &amp; Engagement Stories</h3>
+            <p class="album-block-desc">Outdoor coastal rock formations, scenic boardwalks, and relaxed indoor lifestyle sessions.</p>
+          </div>
+          <button type="button" class="btn btn-outline" data-open-slideshow="prenup">
+            Open Prenup Slideshow
+          </button>
+        </div>
+
+        <div class="album-photos-grid">
+          <article class="gallery-item" data-album="prenup" data-index="0">
+            <div class="gallery-img-wrap ratio-landscape">
+              <img src="805807949_1397021045871967_1192482736027602805_n.jpg" alt="Where Tides Meet Forever" loading="lazy" />
+            </div>
+            <div class="gallery-meta">
+              <h4>Where Tides Meet Forever</h4>
+              <span>Coastal Prenup</span>
+            </div>
+          </article>
+
+          <article class="gallery-item" data-album="prenup" data-index="1">
+            <div class="gallery-img-wrap ratio-landscape">
+              <img src="795523619_1402845421956196_6001966453305717940_n.jpg" alt="Joyful Steps on the Boardwalk" loading="lazy" />
+            </div>
+            <div class="gallery-meta">
+              <h4>Joyful Steps on the Boardwalk</h4>
+              <span>Outdoor Prenup</span>
+            </div>
+          </article>
+
+          <article class="gallery-item" data-album="prenup" data-index="2">
+            <div class="gallery-img-wrap ratio-landscape">
+              <img src="805784039_1397020449205360_5468499569883583447_n.jpg" alt="Warmth &amp; Wanderlust" loading="lazy" />
+            </div>
+            <div class="gallery-meta">
+              <h4>Warmth &amp; Wanderlust</h4>
+              <span>Indoor Lifestyle</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- ================================================================
+           COMPILED ALBUM 04: GRAND RECEPTION & STAGE LIGHTING (2 PHOTOS)
+           ================================================================ -->
+      <div class="compiled-album-block" data-album-block="reception">
+        <div class="album-block-header">
+          <div>
+            <span class="album-number">Album 04 • 2 Photographs</span>
+            <h3 class="album-block-title">Grand Reception &amp; Stage Lighting</h3>
+            <p class="album-block-desc">Dramatic wide-angle venue compositions capturing ceiling installations and stage beams.</p>
+          </div>
+          <button type="button" class="btn btn-outline" data-open-slideshow="reception">
+            Open Reception Slideshow
+          </button>
+        </div>
+
+        <div class="album-photos-grid two-col">
+          <article class="gallery-item" data-album="reception" data-index="0">
+            <div class="gallery-img-wrap ratio-landscape">
+              <img src="1111.jpg" alt="Under the Starlit Canopy" loading="lazy" />
+            </div>
+            <div class="gallery-meta">
+              <h4>Under the Starlit Canopy</h4>
+              <span>Grand Reception</span>
+            </div>
+          </article>
+
+          <article class="gallery-item" data-album="reception" data-index="1">
+            <div class="gallery-img-wrap ratio-landscape">
+              <img src="1.jpg" alt="Symphony of Warmth &amp; Stage Light" loading="lazy" />
+            </div>
+            <div class="gallery-meta">
+              <h4>Symphony of Warmth &amp; Stage Light</h4>
+              <span>Reception Finale</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -288,15 +432,15 @@
       <!-- PRIMARY EVENT CATEGORY TABS -->
       <div class="package-category-tabs" role="tablist">
         <button class="category-tab-btn active" data-target-panel="panel-weddings" role="tab">
-          Weddings &amp; Grand Events
+          <span>Weddings &amp; Grand Events</span>
           <span class="tab-badge">6 Packages</span>
         </button>
         <button class="category-tab-btn" data-target-panel="panel-birthdays" role="tab">
-          Birthdays &amp; Debuts
+          <span>Birthdays &amp; Debuts</span>
           <span class="tab-badge">4 Packages</span>
         </button>
         <button class="category-tab-btn" data-target-panel="panel-addons" role="tab">
-          Add-Ons &amp; Upgrades
+          <span>Add-Ons &amp; Upgrades</span>
           <span class="tab-badge">15 Options</span>
         </button>
       </div>
@@ -510,8 +654,8 @@
 
             <!-- ELITE PLUS PACKAGE (PHP 50,000 - BEST VALUE FEATURED) -->
             <article class="package-card featured">
-              <span class="package-ribbon">Best Value • Prenup + SDE + 40p Album</span>
               <div>
+                <span class="package-ribbon">Best Value • Prenup + SDE + 40p Album</span>
                 <div class="package-tier-tag">Tier 05 • Complete Story &amp; Album</div>
                 <h3 class="package-name">Elite Plus Package</h3>
                 <p class="package-tagline">Combines Prenup, Save the Date, SDE, Drone, and a grand 40-page leather album with dual 11x14 frames.</p>
@@ -571,8 +715,8 @@
 
             <!-- PREMIUM PACKAGE (PHP 65,000 - ALL-IN LUXURY) -->
             <article class="package-card luxury">
-              <span class="package-ribbon">All-In Luxury</span>
               <div>
+                <span class="package-ribbon">All-In Luxury</span>
                 <div class="package-tier-tag">Tier 06 • Complete Grand Production</div>
                 <h3 class="package-name">Premium Package</h3>
                 <p class="package-tagline">The ultimate worry-free celebration: Prenup, SDE, Drone, Photobooth, 40-page album, frames &amp; gallery stand.</p>
@@ -638,6 +782,7 @@
 
         <!-- WEDDING SIDE-BY-SIDE COMPARISON MATRIX -->
         <div class="comparison-wrapper" id="packages-compare-container">
+          <div class="swipe-hint">← Swipe horizontally to compare all 6 packages →</div>
           <table class="comparison-table">
             <thead>
               <tr>
@@ -839,8 +984,8 @@
 
             <!-- DOUBLE SILVER PACKAGE (PHP 36,000) -->
             <article class="package-card featured">
-              <span class="package-ribbon">Popular • Dual Photo &amp; Video Team</span>
               <div>
+                <span class="package-ribbon">Popular • Dual Photo &amp; Video Team</span>
                 <div class="package-tier-tag">Birthday &amp; Debut • Tier 03</div>
                 <h3 class="package-name">Double Silver Package</h3>
                 <p class="package-tagline">Doubled camera &amp; cinema crew (2 Photographers + 2 Videographers) to capture every angle of your grand 18th or milestone party.</p>
@@ -896,8 +1041,8 @@
 
             <!-- GOLD PACKAGE (PHP 50,000 - ALL-IN DEBUT LUXURY) -->
             <article class="package-card luxury">
-              <span class="package-ribbon">All-In Debut • Themed Studio + SDE</span>
               <div>
+                <span class="package-ribbon">All-In Debut • Themed Studio + SDE</span>
                 <div class="package-tier-tag">Birthday &amp; Debut • Tier 04</div>
                 <h3 class="package-name">Gold Package</h3>
                 <p class="package-tagline">Our crown-jewel debut &amp; birthday production with an 8-person crew, Themed Studio Set-up, Stylist, Drone, SDE &amp; Photo Album.</p>
@@ -960,6 +1105,7 @@
 
         <!-- BIRTHDAY & DEBUT COMPARISON TABLE -->
         <div class="comparison-wrapper" id="bday-compare-container">
+          <div class="swipe-hint">← Swipe horizontally to compare all 4 packages →</div>
           <table class="comparison-table">
             <thead>
               <tr>
@@ -1438,14 +1584,17 @@
   </section>
 
   <!-- ====================================================================
-       LIGHTBOX MODAL FOR FULL-RESOLUTION WHITE GALLERY VIEWING
+       LIGHTBOX MODAL WITH COMPILED ALBUM SLIDESHOW NAVIGATION
        ==================================================================== -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
     <button class="lightbox-close" id="lightbox-close" aria-label="Close Gallery Viewer">&times;</button>
+    <button class="lightbox-nav prev" id="lightbox-prev" aria-label="Previous Photo">&#8592;</button>
     <div class="lightbox-content">
       <img src="" alt="" id="lightbox-img" />
       <div class="lightbox-caption" id="lightbox-caption"></div>
+      <div class="lightbox-sub" id="lightbox-sub"></div>
     </div>
+    <button class="lightbox-nav next" id="lightbox-next" aria-label="Next Photo">&#8594;</button>
   </div>
 
   <!-- ====================================================================
@@ -1465,7 +1614,7 @@
           </div>
         </div>
 
-        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
           <a href="https://www.facebook.com/joefamini.photography" target="_blank" rel="noopener" class="btn btn-outline">
             Facebook Page
           </a>
